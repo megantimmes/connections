@@ -1,0 +1,101 @@
+{
+  "_comment": "Firebase Firestore Schema Reference — Connections Puzzle App",
+  "_note": "This file is documentation only. Actual data lives in Firestore.",
+
+  "collections": {
+    "puzzles": {
+      "_description": "Read-only puzzle definitions, seeded once via scripts/seedPuzzles.js",
+      "{puzzleId}": {
+        "id": "puzzle_01",
+        "title": "Puzzle 1",
+        "order": 1,
+        "seededAt": "Timestamp",
+        "groups": [
+          {
+            "category": "Things in a Toolbox",
+            "color": "yellow",
+            "words": ["HAMMER", "WRENCH", "PLIERS", "CHISEL"]
+          },
+          {
+            "category": "___ Berry",
+            "color": "green",
+            "words": ["STRAW", "GOOSE", "BLUE", "RASP"]
+          },
+          {
+            "category": "Famous Operas",
+            "color": "blue",
+            "words": ["AIDA", "TOSCA", "CARMEN", "NORMA"]
+          },
+          {
+            "category": "Poker Hands",
+            "color": "purple",
+            "words": ["FLUSH", "STRAIGHT", "FULL", "QUADS"]
+          }
+        ]
+      }
+    },
+
+    "users": {
+      "{userId}": {
+        "_description": "Anonymous Firebase Auth UID as the document key",
+
+        "meta": {
+          "progress": {
+            "_description": "Tracks which puzzle the user is on and which are done",
+            "currentPuzzleIndex": 2,
+            "completedPuzzles": ["puzzle_01", "puzzle_02"],
+            "updatedAt": "Timestamp"
+          }
+        },
+
+        "gameplay": {
+          "_description": "One document per puzzle — created when the puzzle starts",
+          "{puzzleId}": {
+            "puzzleId": "puzzle_01",
+            "startedAt": "Timestamp",
+            "completedAt": "Timestamp | null",
+            "solved": true,
+            "mistakeCount": 1,
+            "timeSpentMs": 87420,
+            "correctGroups": ["Things in a Toolbox", "___ Berry"],
+            "attempts": [
+              {
+                "words": ["HAMMER", "WRENCH", "PLIERS", "CHISEL"],
+                "correct": true,
+                "category": "Things in a Toolbox",
+                "timestamp": "2024-01-15T14:32:11.000Z"
+              },
+              {
+                "words": ["STRAW", "GOOSE", "FLUSH", "STRAIGHT"],
+                "correct": false,
+                "category": null,
+                "timestamp": "2024-01-15T14:33:05.000Z"
+              },
+              {
+                "words": ["STRAW", "GOOSE", "BLUE", "RASP"],
+                "correct": true,
+                "category": "___ Berry",
+                "timestamp": "2024-01-15T14:34:22.000Z"
+              }
+            ]
+          }
+        },
+
+        "surveys": {
+          "_description": "One document per puzzle — written after the survey is submitted",
+          "{puzzleId}": {
+            "puzzleId": "puzzle_01",
+            "submittedAt": "Timestamp",
+            "responses": {
+              "difficulty": 3,
+              "enjoyment": 4,
+              "strategy": "I started with what I was most certain about",
+              "confusing_words": "FLUSH could have been in a color group too",
+              "overall_feedback": "Really fun! The opera group caught me off guard."
+            }
+          }
+        }
+      }
+    }
+  }
+}
