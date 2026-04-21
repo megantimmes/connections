@@ -128,11 +128,20 @@ export async function fetchGameplaySession(userId, puzzleId) {
 /** Save survey response for a given puzzle */
 export async function saveSurveyResponse(userId, puzzleId, responses) {
   const ref = doc(db, "users", userId, "surveys", puzzleId);
-  await setDoc(ref, {
-    puzzleId,
-    responses,
-    submittedAt: serverTimestamp(),
-  });
+  try {
+    await setDoc(ref, {
+      puzzleId,
+      responses,
+      submittedAt: serverTimestamp(),
+    });
+    console.log("Survey saved successfully!");
+
+    // Read it back immediately to confirm it exists
+    const check = await getDoc(ref);
+    console.log("Read back from Firestore:", check.exists(), check.data());
+  } catch (error) {
+    console.error("Survey save error:", error);
+  }
 }
 
 /** Check whether user already submitted survey for a puzzle */

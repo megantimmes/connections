@@ -278,6 +278,7 @@ export function GameProvider({ children }) {
   }, [state]);
 
   const submitSurvey = useCallback(async (responses) => {
+    console.log("submitSurvey called with:", responses);
     const { userId, puzzle, currentPuzzleIndex, elapsedMs } = state;
     await saveSurveyResponse(userId, puzzle.id, responses);
     const nextIndex = currentPuzzleIndex + 1;
