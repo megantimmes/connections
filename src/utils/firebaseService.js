@@ -46,7 +46,16 @@ export async function fetchAllPuzzles() {
 export async function getUserProgress(userId) {
   const ref = doc(db, "users", userId, "meta", "progress");
   const snap = await getDoc(ref);
+
+  // Write a field to the top-level user document so Firebase Console
+  // shows all subcollections (gameplay, meta, surveys) in the UI tree
+  await setDoc(doc(db, "users", userId), {
+    createdAt: serverTimestamp(),
+    userId,
+  }, { merge: true });
+
   if (snap.exists()) return snap.data();
+
   const initial = { currentPuzzleIndex: 0, completedPuzzles: [] };
   await setDoc(ref, initial);
   return initial;
@@ -127,26 +136,24 @@ export async function fetchGameplaySession(userId, puzzleId) {
 
 /** Save survey response for a given puzzle */
 export async function saveSurveyResponse(userId, puzzleId, responses) {
-  const ref = doc(db, "users", userId, "surveys", puzzleId);
-  try {
-    await setDoc(ref, {
-      puzzleId,
-      responses,
-      submittedAt: serverTimestamp(),
-    });
-    console.log("Survey saved successfully!");
-
-    // Read it back immediately to confirm it exists
-    const check = await getDoc(ref);
-    console.log("Read back from Firestore:", check.exists(), check.data());
-  } catch (error) {
-    console.error("Survey save error:", error);
-  }
+  // Save to top-level surveys collection for easy access in Firebase Console
+  const ref = doc(collection(db, "surveys"));
+  await setDoc(ref, {
+    userId,
+    puzzleId,
+    responses,
+    submittedAt: serverTimestamp(),
+  });
+  console.log("Survey saved to /surveys collection");
 }
 
-/** Check whether user already submitted survey for a puzzle */
 export async function hasSurveyResponse(userId, puzzleId) {
-  const ref = doc(db, "users", userId, "surveys", puzzleId);
-  const snap = await getDoc(ref);
-  return snap.exists();
+  const { getDocs, query, where } = await import("firebase/firestore");
+  const q = query(
+    collection(db, "surveys"),
+    where("userId", "==", userId),
+    where("puzzleId", "==", puzzleId)
+  );
+  const snap = await getDocs(q);
+  return !snap.empty;
 }
