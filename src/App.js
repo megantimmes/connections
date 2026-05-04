@@ -6,7 +6,7 @@ import SurveyForm from "./components/SurveyForm";
 import ProgressBar from "./components/ProgressBar";
 import AllComplete from "./components/AllComplete";
 import "./styles.css";
-import DataViewer from "./components/DataViewer";
+
 
 // then inside GameShell, add it anywhere temporarily:
 
