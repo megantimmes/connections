@@ -1,15 +1,14 @@
 // src/components/PuzzleBoard.js
-import React, { useEffect } from "react";
+import React from "react";
 import { useGame } from "../context/GameContext";
 import WordTile from "./WordTile";
 import SolvedGroup from "./SolvedGroup";
 import MistakeTracker from "./MistakeTracker";
-import { GROUP_COLORS, formatTime } from "../utils/gameLogic";
+import {formatTime } from "../utils/gameLogic";
 
 export default function PuzzleBoard() {
   const {
     state,
-    totalPuzzles,
     toggleWord,
     submitGuess,
     deselectAll,

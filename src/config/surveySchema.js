@@ -11,7 +11,7 @@ const surveySchema = [
     label: "How difficult was this puzzle?",
     type: "rating",
     required: true,
-    labels: { low: "Very Easy", high: "Very Hard" },
+    labels: { low: "Very Easy", high: "Very Hard"},
   },
   {
     id: "preference",

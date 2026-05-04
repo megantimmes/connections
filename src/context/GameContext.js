@@ -25,7 +25,7 @@ import {
   completeGameplay,
   saveSurveyResponse,
 } from "../utils/firebaseService";
-import { buildWordTiles, validateGuess, isGameOver, isPuzzleSolved } from "../utils/gameLogic";
+import { buildWordTiles, validateGuess } from "../utils/gameLogic";
 
 export const MAX_MISTAKES = 4;
 
@@ -279,7 +279,7 @@ export function GameProvider({ children }) {
 
   const submitSurvey = useCallback(async (responses) => {
     console.log("submitSurvey called with:", responses);
-    const { userId, puzzle, currentPuzzleIndex, elapsedMs } = state;
+    const { userId, puzzle, currentPuzzleIndex} = state;
     await saveSurveyResponse(userId, puzzle.id, responses);
     const nextIndex = currentPuzzleIndex + 1;
     await advanceUserProgress(userId, puzzle.id, nextIndex);
