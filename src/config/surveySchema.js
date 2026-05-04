@@ -33,7 +33,7 @@ const surveySchema = [
     type: "rating",
     required: true,
     labels: { low: "Really obscure", high: "Completely fair" },
-  },,
+  },
   {
     id: "overall_feedback",
     label: "Any other thoughts on this puzzle?",
