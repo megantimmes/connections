@@ -27,113 +27,219 @@ const db = admin.firestore();
 
 const PUZZLES = [
   {
-    id: "puzzle_01",
+    id: "puzzle_01_nyt",
     title: "Puzzle 1",
     order: 1,
     groups: [
-      { category: "Things in a Toolbox",  color: "yellow", words: ["HAMMER","WRENCH","PLIERS","CHISEL"] },
-      { category: "___ Berry",             color: "green",  words: ["STRAW","GOOSE","BLUE","RASP"] },
-      { category: "Famous Operas",         color: "blue",   words: ["AIDA","TOSCA","CARMEN","NORMA"] },
-      { category: "Poker Hands",           color: "purple", words: ["FLUSH","STRAIGHT","FULL","QUADS"] },
+      {
+        category: "YEARN",
+        color: "yellow",
+        words: ["DESIRE", "LONG", "PINE", "YEN"],
+      },
+      {
+        category: "MAGAZINES",
+        color: "green",
+        words: ["FORTUNE", "MAD", "NATURE", "O"],
+      },
+      {
+        category: "CHARACTERS IN BOND MOVIES",
+        color: "blue",
+        words: ["BOND", "M", "MONEYPENNY", "Q"],
+      },
+      {
+        category: "WORDS THAT PRECEDE 'POP' IN MUSIC GENRES",
+        color: "purple",
+        words: ["BUBBLEGUM", "EURO", "K", "POWER"],
+      },
     ],
   },
   {
-    id: "puzzle_02",
+    id: "puzzle_02_multi",
     title: "Puzzle 2",
     order: 2,
     groups: [
-      { category: "Breakfast Foods",  color: "yellow", words: ["WAFFLE","BAGEL","CREPE","MUFFIN"] },
-      { category: "Shades of Blue",   color: "green",  words: ["COBALT","AZURE","TEAL","NAVY"] },
-      { category: "Greek Letters",    color: "blue",   words: ["ALPHA","DELTA","OMEGA","SIGMA"] },
-      { category: "Things that 'Run'",color: "purple", words: ["NOSE","RIVER","PROGRAM","STOCKING"] },
+      {
+        category: "BARBER TOOLS",
+        color: "yellow",
+        words: ["CLIPPERS", "COMB", "RAZOR", "SHEARS"],
+      },
+      {
+        category: "HOMOPHONES OF LETTERS",
+        color: "green",
+        words: ["BEE", "EYE", "JAY", "SEA"],
+      },
+      {
+        category: "___ FENCE",
+        color: "blue",
+        words: ["IRON", "PICKET", "PRIVACY", "RAIL"],
+      },
+      {
+        category: "ONE-SYLLABLE WORDS ENDING IN DOUBLE L",
+        color: "purple",
+        words: ["BALL", "GULL", "KILL", "TOLL"],
+      },
     ],
   },
   {
-    id: "puzzle_03",
+    id: "puzzle_03_gpt",
     title: "Puzzle 3",
     order: 3,
     groups: [
-      { category: "Dog Breeds",                color: "yellow", words: ["BEAGLE","POODLE","BOXER","COLLIE"] },
-      { category: "Planets",                   color: "green",  words: ["MARS","VENUS","SATURN","URANUS"] },
-      { category: "Words that follow 'Black'", color: "blue",   words: ["BIRD","BERRY","SMITH","BOARD"] },
-      { category: "Jazz Legends",              color: "purple", words: ["COLTRANE","MONK","MINGUS","PARKER"] },
+      {
+        category: "Breakfast Foods",
+        color: "yellow",
+        words: ["BACON", "EGGS", "PANCAKES", "WAFFLES"],
+      },
+      {
+        category: "Parts of a Tree",
+        color: "green",
+        words: ["BARK", "BRANCH", "LEAF", "ROOT"],
+      },
+      {
+        category: "Card Game Actions",
+        color: "blue",
+        words: ["BID", "DEAL", "DRAW", "FOLD"],
+      },
+      {
+        category: "Preceded by FIRE",
+        color: "purple",
+        words: ["ANT", "DRILL", "FLY", "WALL"],
+      },
     ],
   },
   {
-    id: "puzzle_04",
+    id: "puzzle_04_nyt",
     title: "Puzzle 4",
     order: 4,
     groups: [
-      { category: "Vegetables",          color: "yellow", words: ["KALE","LEEK","TURNIP","ENDIVE"] },
-      { category: "Architecture Styles", color: "green",  words: ["GOTHIC","BAROQUE","BRUTALIST","TUDOR"] },
-      { category: "Card Games",          color: "blue",   words: ["BRIDGE","SNAP","RUMMY","SOLITAIRE"] },
-      { category: "___ Stone",           color: "purple", words: ["ROLLING","KIDNEY","LIME","COBBLE"] },
+      {
+        category: "BIOLOGICAL BUILDING BLOCKS",
+        color: "yellow",
+        words: ["ATOM", "CELL", "MOLECULE", "PROTEIN"],
+      },
+      {
+        category: "PURCHASES FOR A BABY",
+        color: "green",
+        words: ["BOTTLE", "CRIB", "MOBILE", "RATTLE"],
+      },
+      {
+        category: "OBJECTS PLAYED AS INSTRUMENTS",
+        color: "blue",
+        words: ["JUG", "SAW", "SPOONS", "WASHBOARD"],
+      },
+      {
+        category: "___ TAG",
+        color: "purple",
+        words: ["DOG", "FREEZE", "PHONE", "PRICE"],
+      },
     ],
   },
   {
-    id: "puzzle_05",
+    id: "puzzle_05_multi",
     title: "Puzzle 5",
     order: 5,
     groups: [
-      { category: "Types of Cheese",                  color: "yellow", words: ["BRIE","GOUDA","HAVARTI","MANCHEGO"] },
-      { category: "Olympic Sports",                   color: "green",  words: ["EPEE","LUGE","BIATHLON","POMMEL"] },
-      { category: "Shakespeare Plays",                color: "blue",   words: ["OTHELLO","MACBETH","TEMPEST","PERICLES"] },
-      { category: "Words containing hidden animals",  color: "purple", words: ["CARAT","PROWL","SHEAR","FIASCO"] },
+      {
+        category: "HOLLYWOOD ACTORS NAMED CHRIS",
+        color: "yellow",
+        words: ["EVANS", "HEMSWORTH", "PINE", "PRATT"],
+      },
+      {
+        category: "SYNONYMS OF TRUMPET, AS A VERB",
+        color: "green",
+        words: ["ADVERTISE", "AVOW", "DECLARE", "PROMULGATE"],
+      },
+      {
+        category: "BLACKJACK PLAYER DECISIONS",
+        color: "blue",
+        words: ["DOUBLE", "HIT", "SPLIT", "STAND"],
+      },
+      {
+        category: "SAXOPHONE BRANDS",
+        color: "purple",
+        words: ["CANNONBALL", "KING", "SELMER", "YAMAHA"],
+      },
     ],
   },
   {
-    id: "puzzle_06",
+    id: "puzzle_06_gpt",
     title: "Puzzle 6",
     order: 6,
     groups: [
-      { category: "Parts of a Ship",           color: "yellow", words: ["BOW","STERN","HULL","KEEL"] },
-      { category: "Cocktail Ingredients",      color: "green",  words: ["BITTERS","GRENADINE","VERMOUTH","CURACAO"] },
-      { category: "Nobel Prize Categories",    color: "blue",   words: ["PHYSICS","PEACE","LITERATURE","CHEMISTRY"] },
-      { category: "Homophones of other words", color: "purple", words: ["KNOT","HEIR","WRAP","SUITE"] },
+      {
+        category: "Card Suits",
+        color: "yellow",
+        words: ["CLUB", "DIAMOND", "HEART", "SPADE"],
+      },
+      {
+        category: "Farm Animals",
+        color: "green",
+        words: ["COW", "GOAT", "PIG", "SHEEP"],
+      },
+      {
+        category: "Words with Silent First Letters",
+        color: "blue",
+        words: ["GNOME", "KNEE", "PSALM", "WRIST"],
+      },
+      {
+        category: "___ Jack",
+        color: "purple",
+        words: ["APPLE", "CAR", "CRACKER", "LUMBER"],
+      },
     ],
   },
   {
-    id: "puzzle_07",
+    id: "puzzle_07_nyt",
     title: "Puzzle 7",
     order: 7,
     groups: [
-      { category: "Things in a Bakery",  color: "yellow", words: ["LOAF","TART","ÉCLAIR","BRIOCHE"] },
-      { category: "Musical Tempos",      color: "green",  words: ["ALLEGRO","PRESTO","ADAGIO","VIVACE"] },
-      { category: "Things that are 'Sharp'", color: "blue", words: ["TACK","CHEDDAR","WIT","TURN"] },
-      { category: "Collective Nouns",    color: "purple", words: ["MURDER","PARLIAMENT","BLOAT","UNKINDNESS"] },
+      {
+        category: "CHANGE STATES OF MATTER",
+        color: "yellow",
+        words: ["CONDENSE", "FREEZE", "MELT", "VAPORIZE"],
+      },
+      {
+        category: "REPLACEMENT",
+        color: "green",
+        words: ["ALTERNATE", "BACKUP", "COVER", "SUB"],
+      },
+      {
+        category: "SLANGY NAMES FOR PROFESSIONS",
+        color: "blue",
+        words: ["COPPER", "HACK", "SHRINK", "SUIT"],
+      },
+      {
+        category: "MARIAH CAREY NUMBER ONE HITS",
+        color: "purple",
+        words: ["FANTASY", "HERO", "HONEY", "SOMEDAY"],
+      },
     ],
   },
   {
-    id: "puzzle_08",
+    id: "puzzle_08_multi",
     title: "Puzzle 8",
     order: 8,
     groups: [
-      { category: "Dinosaurs",             color: "yellow", words: ["RAPTOR","STEGO","BRACHIO","DIPLODO"] },
-      { category: "US State Capitals",     color: "green",  words: ["AUSTIN","ALBANY","BOISE","TOPEKA"] },
-      { category: "Words meaning 'Fake'",  color: "blue",   words: ["SHAM","BOGUS","SPURIOUS","ERSATZ"] },
-      { category: "___ drop",              color: "purple", words: ["TEAR","NAME","BACK","RAIN"] },
-    ],
-  },
-  {
-    id: "puzzle_09",
-    title: "Puzzle 9",
-    order: 9,
-    groups: [
-      { category: "Things at a Carnival",  color: "yellow", words: ["FUNNEL","FERRIS","TILT","BUMPER"] },
-      { category: "Famous Bridges",        color: "green",  words: ["GOLDEN","TOWER","BROOKLYN","SYDNEY"] },
-      { category: "Chess Pieces",          color: "blue",   words: ["ROOK","BISHOP","KNIGHT","PAWN"] },
-      { category: "Words spelled backwards = new word", color: "purple", words: ["STRESSED","REPAID","REWARD","STRAW"] },
-    ],
-  },
-  {
-    id: "puzzle_10",
-    title: "Puzzle 10",
-    order: 10,
-    groups: [
-      { category: "Flowers",                 color: "yellow", words: ["DAHLIA","ZINNIA","PEONY","FOXGLOVE"] },
-      { category: "Coding Languages",        color: "green",  words: ["RUST","KOTLIN","ELIXIR","SWIFT"] },
-      { category: "Philosophical Concepts",  color: "blue",   words: ["LOGOS","PATHOS","ETHOS","KAIROS"] },
-      { category: "Things with 'Keys'",      color: "purple", words: ["PIANO","FLORIDA","MONKEY","LOCK"] },
+      {
+        category: "FANTASY RPG CLASSES",
+        color: "yellow",
+        words: ["BARD", "CLERIC", "DRUID", "RANGER"],
+      },
+      {
+        category: "VIDEO-CALL APP CONTROLS",
+        color: "green",
+        words: ["CHAT", "MUTE", "RECORD", "SHARE"],
+      },
+      {
+        category: "WORDS WITH SILENT FIRST LETTERS",
+        color: "blue",
+        words: ["KNEAD", "MNEMONIC", "PSALM", "WRIST"],
+      },
+      {
+        category: "PENCIL BRANDS",
+        color: "purple",
+        words: ["DIXON", "KUM", "PENTEL", "STAEDTLER"],
+      },
     ],
   },
 ];
