@@ -436,6 +436,21 @@ button {
   padding: 0.5rem;
 }
 
+/* ── Survey Layout ─────────────────────────────────────────── */
+.survey-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.survey-layout .puzzle-board .board-header,
+.survey-layout .puzzle-board .board-controls,
+.survey-layout .puzzle-board .mistake-tracker,
+.survey-layout .puzzle-board .status-banner,
+.survey-layout .puzzle-board .game-over-msg {
+  display: none;
+}
+
 /* ── Survey Form ───────────────────────────────────────────── */
 .survey-form {
   display: flex;

@@ -46,7 +46,14 @@ function GameShell() {
       </header>
 
       <div className="app-content">
-        {gameStatus === "survey" ? <SurveyForm /> : <PuzzleBoard />}
+        {gameStatus === "survey" ? (
+          <div className="survey-layout">
+            <PuzzleBoard />
+            <SurveyForm />
+          </div>
+        ) : (
+          <PuzzleBoard />
+        )}
       </div>
     </main>
   );
