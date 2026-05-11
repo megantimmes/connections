@@ -218,4 +218,3 @@ const PUZZLES = [
 ];
 
 export default PUZZLES;
-if (typeof module !== "undefined") module.exports = PUZZLES;
