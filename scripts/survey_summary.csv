@@ -1,0 +1,16 @@
+GROUP,N,difficulty,preference,creativity,fairness
+--- By Type ---
+nyt,66,4.11,3.18,3.48,2.98
+multi,52,3.31,3.62,3.60,3.63
+gpt,32,2.25,3.59,3.28,3.91
+
+--- By Puzzle ---
+GROUP,N,difficulty,preference,creativity,fairness
+puzzle_01_nyt (nyt),35,4.46,3.06,3.63,2.83
+puzzle_02_multi (multi),25,3.28,3.84,3.96,3.96
+puzzle_03_gpt (gpt),19,2.05,3.63,3.32,4.05
+puzzle_04_nyt (nyt),18,3.44,3.67,3.33,3.33
+puzzle_05_multi (multi),15,3.40,3.40,3.40,3.47
+puzzle_06_gpt (gpt),13,2.54,3.54,3.23,3.69
+puzzle_07_nyt (nyt),13,4.08,2.85,3.31,2.92
+puzzle_08_multi (multi),12,3.25,3.42,3.08,3.17
